@@ -1,4 +1,4 @@
-function [ X ] = Matrix_Saddle_point(n,d)
+function [ X ] = Matrix_Saddle_Point(n,d)
 % Relevant saddle point problem
 
 % Input parsing
