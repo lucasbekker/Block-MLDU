@@ -20,9 +20,12 @@ for i = 1:length(s)
     D(index.D.i,index.D.j) = A(index.D.i,index.D.j);
     U(index.U.i,index.U.j) = A(index.U.i,index.U.j);
     
-    A(index.M.i,index.M.j) = A(index.M.i,index.M.j) - ...
-    L(index.L.i,index.L.j)*D(index.D.i,index.D.j)^-1*U(index.U.i,index.U.j);
-        
+    schur_complement =  A(index.L.i,index.L.j)* ...
+                       (A(index.D.i,index.D.j)\ ...
+                        A(index.U.i,index.U.j));
+    
+    A(index.M.i,index.M.j) = A(index.M.i,index.M.j) - schur_complement;
+           
 end
 
 % Nested index function
