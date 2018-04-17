@@ -6,10 +6,18 @@ j = 0;
 i_j = struct('i',[],'j',[]);
 index = struct('M',i_j,'L',i_j,'D',i_j,'U',i_j);
 
+% Test for sparse
+if issparse(A)
+    A = full(A);
+end
+
+% Convert to gpuArray
+A     = gpuArray(A);
+
 % Preallocate output matrices
-L = zeros(m,n);
-D = zeros(m,n);
-U = zeros(m,n);
+L = zeros(m,n,'gpuArray');
+D = zeros(m,n,'gpuArray');
+U = zeros(m,n,'gpuArray');
 
 % Loop over the blocks
 for i = 1:length(s)
