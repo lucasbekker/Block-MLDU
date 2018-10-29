@@ -53,16 +53,17 @@ end
 % Nested index shift function.
 function [ ] = shift_index_nested( i, s_end )
 
-    D_cell{i}(1,:) = D_cell{i}(1,:) + (index.D.i(1) - 1);
-    D_cell{i}(2,:) = D_cell{i}(2,:) + (index.D.j(1) - 1);
-    
+    D_cell{i}([1,2],:) =  D_cell{i}([1,2],:) + ...
+                         [(index.D.i(1) - 1);(index.D.j(1) - 1)];
+        
     % Only shift the index when not at the last itteration.
     if i ~= s_end
         
-        L_cell{i}(1,:) = L_cell{i}(1,:) + (index.L.i(1) - 1);
-        L_cell{i}(2,:) = L_cell{i}(2,:) + (index.L.j(1) - 1);
-        U_cell{i}(1,:) = U_cell{i}(1,:) + (index.U.i(1) - 1);
-        U_cell{i}(2,:) = U_cell{i}(2,:) + (index.U.j(1) - 1);
+        L_cell{i}([1,2],:) =  L_cell{i}([1,2],:) + ...
+                             [(index.L.i(1) - 1);(index.L.j(1) - 1)];
+        
+        U_cell{i}([1,2],:) =  U_cell{i}([1,2],:) + ...
+                             [(index.U.i(1) - 1);(index.U.j(1) - 1)];
         
     end
 
