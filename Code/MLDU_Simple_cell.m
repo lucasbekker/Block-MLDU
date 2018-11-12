@@ -35,9 +35,9 @@ D = collaps_cell_local(D_cell,m,n);
 U = collaps_cell_local(U_cell,m,n);
 
 % Nested index update function
-function [ j ] = update_index_nested( s, j, m, n )
+function [ j ] = update_index_nested( s_i, j, m, n )
    
-    index.D.i = (1:s) + j;
+    index.D.i = (1:s_i) + j;
     index.D.j = index.D.i;
     index.L.i = (index.D.i(end) + 1):m;
     index.L.j = index.D.j;
@@ -46,7 +46,7 @@ function [ j ] = update_index_nested( s, j, m, n )
     index.M.i = index.L.i;
     index.M.j = index.U.j;
     
-    j = s + j;
+    j = s_i + j;
        
 end
 
@@ -72,20 +72,20 @@ end
 end
 
 % Local function that fills the cell array.
-function [ A_cell ] = fill_cells_local( A, A_cell, index_i, index_j )
+function [ M_cell ] = fill_cells_local( M, M_cell, index_i, index_j )
     
     % Insert COO representation of selected A entries.
-    [A_cell(1,:),A_cell(2,:),A_cell(3,:)] = find(A(index_i,index_j));
+    [M_cell(1,:),M_cell(2,:),M_cell(3,:)] = find(M(index_i,index_j));
 
 end
 
 % Local function that converts the cell array to a regular sparse matrices.
-function [ A ] = collaps_cell_local( A_cell, m, n )
+function [ M ] = collaps_cell_local( M_cell, m, n )
     
     % Strange matlab syntax that just works in this particalur case...
-    A_col = [A_cell{:}];
+    M_col = [M_cell{:}];
     
     % Convert COO to CCS (MATLAB) sparse.
-    A = sparse(A_col(1,:),A_col(2,:),A_col(3,:),m,n);
+    M = sparse(M_col(1,:),M_col(2,:),M_col(3,:),m,n);
     
 end
