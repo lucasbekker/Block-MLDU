@@ -1,0 +1,15 @@
+merge ccs_copy (used to copy only part ...?) and ccs_truncate?
+
+naming sequence for sources:
+
+[A, rank, issym, isposdef, ... ] = galery_real_220_30_mr_()
+[A, rank, issym, isposdef, ... ] = galery_real_220_30_mr_family(lambda_parameter)
+[A, ...                    ... , nb_family] = galery_pos_def_sequence(nb)
+
+mr: maximal rank
+r20: rank 20
+
+matlab gallery does it differently: no properties back, it returns [A, B, C, ....] a family of matrices
+
+
+
