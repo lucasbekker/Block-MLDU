@@ -1,0 +1,27 @@
+\ProvidesPackage{thesis}
+
+\usepackage{a4wide}                     % Tell latex to use the room there is on the page
+\usepackage{amsmath}                    % For equation environment
+\usepackage[british]{babel}             % Use British hyphenation stuff
+\usepackage{fancyhdr}                   % Nice and shiny headers
+\usepackage{graphicx}                   % For images
+\usepackage{grffile}                    % So that we can use spaces in image names...
+\usepackage{paralist}                   % Compact enumerate and itemize
+\usepackage{datetime}                   % For formatting dates
+\usepackage{array}                      % To add extra line spaces in tables
+\usepackage{lineno}                     % Include line numbers
+\usepackage{hyperref}                   % For inserting PDF options (author etc.)
+\usepackage{acronym}                    % create acronyms
+\usepackage[backend=biber,              % Biber as backend for Biblatex
+            autocite=footnote,
+            citestyle=verbose]{biblatex}
+\usepackage{csquotes}                   % Required for Biblatex
+\usepackage[absolute]{textpos}
+\usepackage{caption}
+\usepackage[framed,                     % Make pretty matlab code
+            numbered,
+            autolinebreaks,
+            useliterate]{mcode}
+\usepackage{xcolor}
+
+\addbibresource{references.bib}

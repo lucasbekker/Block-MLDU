@@ -1,0 +1,66 @@
+% TU/e Style Master Thesis template for LaTeX.
+
+\documentclass[a4paper,10pt,twoside]{report}
+
+% Packages are defined at the thesis.sty file.
+\usepackage{thesis}
+
+% Define key:value pairs.
+\newcommand{\shortdoctitle}{Block MLDU report}
+\newcommand{\doctitle}{Block MLDU}
+\newcommand{\docsubtitle}{Accelerate Block MLDU}
+\newcommand{\me}{Lucas Bekker}
+\newcommand{\keywords}{MLDU}
+\newcommand{\version}{v1.0}
+\newcommand{\studentid}{0657761}
+\newcommand{\monthYear}{December 2018}
+\newcommand{\firstCommitteeMember}{dr. J.M.L. Joseph Maubach}
+\newcommand{\secondCommitteeMember}{}
+\newcommand{\thirdCommitteeMember}{}
+
+\author{\me}
+
+% PDF settings.
+\hypersetup
+{
+    pdfauthor={\me},
+    pdftitle={\shortdoctitle},
+    pdfsubject={\doctitle},
+    pdfkeywords={\keywords}
+}
+
+\begin{document}
+
+% Titlepage
+\pagenumbering{gobble}
+\include{titlepage}
+\cleardoublepage
+\pagenumbering{roman}
+\normalsize
+
+% Abstract
+%\input{chapters/abstract}
+
+% TOC, list of figures and list of tables.
+\cleardoublepage
+\tableofcontents
+\input{chapters/acronym}
+
+% Page settings
+\setcounter{page}{0}
+\pagenumbering{arabic}
+
+% Chapters
+\cleardoublepage
+\input{chapters/introduction.tex}
+\input{chapters/performance_baseline.tex}
+\input{chapters/MLDU_Simple.tex}
+\input{chapters/MLDU_Simple_cell.tex}
+\input{chapters/MLDU_Simple_GPU.tex}
+\input{chapters/conclusion.tex}
+
+% Bibliography
+\cleardoublepage
+\printbibliography
+
+\end{document}

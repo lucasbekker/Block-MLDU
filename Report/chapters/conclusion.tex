@@ -1,0 +1,15 @@
+\chapter{Conclusion}
+
+The goal of this Capita Selecta is to investigate the possibilities for a fast MATLAB based implementation of the Block MLDU algorithm. The most distinguishing drawback of using MATLAB for high performance code is its interpreter overhead.\\
+
+\noindent The implementations provided in this report are not particularly fast, but they do indicate one thing. Because almost all of the runtime of the implementation is spent on a single MATLAB statement, it can be concluded that the interpreter overhead of MATLAB is not to blame for the disappointing runtime.\\
+
+\noindent Finding that the MATLAB interpreter is not the performance bottleneck, incentivized further research into a MATLAB implementation of the Block MLDU algorithm. This research has shown that the bottleneck is the storing operation of the Schur complement update into the matrix. Fill-in is the ultimate culprit of this problem, because it requires freeing extra memory for the additional non-zero elements. The memory operations required are DRAM latency bound and as such are very hard to accelerate.\\
+
+\noindent It should be noted that an incomplete version of the Block MLDU algorithm would not suffer the aforementioned problems, and as such could easily be implemented in a high performance manner using a similar approach as provided in this report.\\
+
+\noindent The conclusion of this Capita Selecta is that the default sparse matrix storage format (CCS) of MATLAB is sub optimal for this algorithm. Large performance gains should be possible if a matrix storage format was selected that circumvents the costly memory freeing operations associated with the Schur complement update.\\
+
+\noindent One possible alternative to CCS would be COO, as it is more flexible. It's main advantage in this situation is the fact that the order in which the matrix entries are stored, does not alter the location of the entries in the matrix. This should circumvent the need for all the memory freeing operations that are currently frustration the performance.\\
+
+\noindent The main challenge of the COO approach is searching through the elements of the matrix during the matrix splitting step of the algorithm. The lack of ordering in the COO format causes these operations to be much slower than in the CCS situation, so finding a way around this problem will again provide great performance improvements. 
